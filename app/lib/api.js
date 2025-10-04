@@ -1,7 +1,17 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+function getApiBase() {
+  const envBase = (process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || '').trim().replace(/\/$/, '')
+  if (envBase) return envBase
+  // Client-side: use current origin
+  if (typeof window !== 'undefined') {
+    return window.location.origin.replace(/\/$/, '')
+  }
+  // Server-side fallback: use public site URL or prod domain
+  return (process.env.NEXT_PUBLIC_SITE_URL || 'https://hexmy.com').replace(/\/$/, '')
+}
 
 async function request(path, { method = 'GET', headers = {}, body } = {}) {
-  const url = path.startsWith('http') ? path : `${API_BASE}${path}`
+  const base = getApiBase()
+  const url = path.startsWith('http') ? path : `${base}${path}`
 
   const res = await fetch(url, {
     method,

@@ -38,7 +38,10 @@ export default function Navbar() {
 
   // Preload tags and stars once
   useEffect(() => {
-    const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+    // Prefer explicit env var; otherwise use current origin in browser.
+    const API_BASE = (process.env.NEXT_PUBLIC_API_URL && process.env.NEXT_PUBLIC_API_URL.trim())
+      ? process.env.NEXT_PUBLIC_API_URL.trim().replace(/\/$/, '')
+      : (typeof window !== 'undefined' ? window.location.origin.replace(/\/$/, '') : '')
     const load = async () => {
       try {
         const [tagsRes, starsRes] = await Promise.all([
