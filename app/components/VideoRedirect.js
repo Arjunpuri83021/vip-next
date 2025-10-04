@@ -39,7 +39,6 @@ export default function VideoRedirect({ link, imageUrl, title }) {
           </span>
         </button>
       </div>
-      <p className="text-sm text-gray-400 mt-3">Click the play button to watch this video on its source website.</p>
     </div>
   )
 }

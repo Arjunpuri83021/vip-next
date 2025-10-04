@@ -4,11 +4,28 @@ import Pagination from '../components/Pagination'
 
 export const revalidate = 30
 
+function capitalize(str = '') {
+  if (!str) return ''
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 export async function generateMetadata({ searchParams }) {
   const q = searchParams?.q || ''
   const page = Number(searchParams?.page || 1)
-  const title = q ? `Search: ${q}${page > 1 ? ` - Page ${page}` : ''}` : 'Search'
-  const description = q ? `Search results for "${q}" on Hexmy.${page > 1 ? ` Page ${page}.` : ''}` : 'Search videos on Hexmy.'
+  let total = 0
+  if (q) {
+    try {
+      const res = await api.searchPosts(q, page, 16)
+      total = res?.totalRecords || 0
+    } catch (_) {}
+  }
+
+  const title = q
+    ? `${capitalize(q)} Best porn videos${page > 1 ? ` - Page ${page}` : ''}`
+    : 'Search'
+  const description = q
+    ? `Showing results for ${q} porn videos — total ${total} results${page > 1 ? `, page ${page}` : ''}.`
+    : 'Search videos on Hexmy.'
 
   const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://hexmy.com'
   const canonical = q
@@ -19,6 +36,13 @@ export async function generateMetadata({ searchParams }) {
     title,
     description,
     alternates: { canonical },
+    keywords: q ? [`${q} porn videos`, `${q} sex videos`, `${q} xxx`, 'free porn', 'best porn videos'] : undefined,
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: 'website',
+    },
   }
 }
 
@@ -33,13 +57,13 @@ export default async function SearchPage({ searchParams }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-semibold mb-6">Search</h1>
+      <h1 className="text-2xl font-semibold mb-6">{q ? `${capitalize(q)} Best porn videos` : 'Search'}</h1>
 
       <div className="mb-4 text-gray-300">
         {q ? (
           <>
-            Showing results for <span className="text-white font-medium">"{q}"</span>
-            {data.totalRecords ? ` — ${data.totalRecords} results` : ''}
+            Showing results for <span className="text-white font-medium">{q} porn videos</span>
+            {typeof data.totalRecords === 'number' ? ` — total ${data.totalRecords} results` : ''}
           </>
         ) : (
           <span>Enter a keyword in the search bar to find videos.</span>
