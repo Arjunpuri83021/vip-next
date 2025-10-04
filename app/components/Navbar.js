@@ -48,7 +48,7 @@ export default function Navbar() {
           fetch(`${API_BASE}/tags?limit=500`),
           fetch(`${API_BASE}/pornstars?limit=500`),
         ])
-        if (tagsRes.ok) {
+        if (tagsRes.ok && (tagsRes.headers.get('content-type') || '').includes('application/json')) {
           const td = await tagsRes.json()
           const rawTags = (td.tags || []).map(t => (typeof t === 'string' ? t : (t.name || ''))).filter(Boolean)
           // Dedupe tags by normalized key (lowercase + trimmed)
@@ -60,7 +60,7 @@ export default function Navbar() {
           })
           setAllTags(Array.from(tagMap.values()))
         }
-        if (starsRes.ok) {
+        if (starsRes.ok && (starsRes.headers.get('content-type') || '').includes('application/json')) {
           const sd = await starsRes.json()
           // Dedupe stars by normalized key (lowercase, hyphen/space-insensitive)
           const starMap = new Map()
