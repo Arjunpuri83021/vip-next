@@ -31,8 +31,8 @@ export async function generateMetadata({ params }) {
   }
 
   const title = video?.titel || video?.title || 'Video'
-  const description = video?.desc || video?.metatitel || 'Watch premium video on Hexmy.'
-  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://hexmy.com'
+  const description = video?.desc || video?.metatitel || 'Watch premium video on vipmilfnut.'
+  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://vipmilfnut.com'
   const titleSlug = slugify(title)
   const canonical = `${canonicalBase}/video/${id}${titleSlug ? `-${titleSlug}` : ''}`
 

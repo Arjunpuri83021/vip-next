@@ -129,15 +129,15 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
+    <nav className="text-white sticky top-0 z-50 glass glass-border border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">H</span>
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md shadow-purple-900/30">
+              <span className="text-white font-bold text-lg">V</span>
             </div>
-            <span className="text-xl font-bold text-gradient">Hexmy</span>
+            <span className="text-xl font-bold text-gradient">vipmilfnut</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -167,18 +167,18 @@ export default function Navbar() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchSuggestions.length > 0 && setShowSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                className="w-64 px-4 py-2 pl-10 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors duration-200"
+                className="w-64 px-4 py-2 pl-10 bg-black/40 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500 transition-colors duration-200 placeholder:text-gray-400"
               />
               <Search className="absolute left-3 top-2.5 text-gray-400" size={16} />
               
               {/* Search Suggestions */}
               {showSuggestions && searchSuggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg max-h-64 overflow-y-auto z-50">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-black/70 border border-white/10 rounded-lg shadow-xl backdrop-blur-sm max-h-64 overflow-y-auto z-50">
                   {searchSuggestions.map((suggestion, index) => (
                     <button
                       key={index}
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="w-full text-left px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+                      className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors duration-200"
                     >
                       {suggestion.name}
                     </button>
@@ -240,7 +240,7 @@ export default function Navbar() {
                   </Link>
                 )
               })}
-              
+
               {/* Mobile Categories */}
               <div className="px-4 py-2">
                 <h3 className="text-sm font-semibold text-gray-400 mb-2">Categories</h3>
@@ -264,7 +264,7 @@ export default function Navbar() {
 
       {/* Mobile Search Overlay */}
       {isMobileSearchOpen && (
-        <div className="fixed top-0 left-0 right-0 bg-gray-900 z-[60] border-b border-gray-800">
+        <div className="fixed top-0 left-0 right-0 z-[60] glass glass-border border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div className="flex items-center space-x-2">
               <div className="flex-1 relative">
@@ -277,17 +277,17 @@ export default function Navbar() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => searchSuggestions.length > 0 && setShowSuggestions(true)}
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                    className="w-full px-4 py-2 pl-10 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 pl-10 bg-black/40 border border-white/10 rounded-lg focus:outline-none focus:border-purple-500"
                   />
                   <Search className="absolute left-3 top-2.5 text-gray-400" size={16} />
                 </form>
                 {showSuggestions && searchSuggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded-lg shadow-lg max-h-64 overflow-y-auto z-[70]">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-black/70 border border-white/10 rounded-lg shadow-xl backdrop-blur-sm max-h-64 overflow-y-auto z-[70]">
                     {searchSuggestions.map((suggestion, index) => (
                       <button
                         key={index}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className="w-full text-left px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+                        className="w-full text-left px-4 py-2 hover:bg-white/10 transition-colors duration-200"
                       >
                         {suggestion.name}
                       </button>

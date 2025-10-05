@@ -6,7 +6,7 @@ export const revalidate = 60
 
 export const metadata = {
   title: 'New Videos',
-  description: 'Watch the latest new videos on Hexmy with high-quality streaming.',
+  description: 'Watch the latest new videos on vipmilfnut with high-quality streaming.',
   alternates: { canonical: '/new-videos' },
 }
 

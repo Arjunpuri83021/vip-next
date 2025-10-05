@@ -61,9 +61,9 @@ export default function VideoCard({ video, priority = false }) {
   }
 
   return (
-    <div className="video-card bg-gray-800 rounded-lg overflow-hidden shadow-lg group">
+    <div className="video-card glass glass-border rounded-xl overflow-hidden group">
       <Link href={`/video/${getVideoUrlSegment()}`}>
-        <div className="relative aspect-video bg-gray-700">
+        <div className="relative aspect-video bg-black/30">
           {/* Thumbnail Image */}
           {!imageError && video.imageUrl ? (
             <>
@@ -82,28 +82,28 @@ export default function VideoCard({ video, priority = false }) {
               
               {/* Loading placeholder */}
               {!imageLoaded && (
-                <div className="absolute inset-0 bg-gray-700 animate-pulse flex items-center justify-center">
-                  <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="absolute inset-0 bg-black/30 animate-pulse flex items-center justify-center">
+                  <div className="w-12 h-12 border-4 border-purple-500/70 border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
             </>
           ) : (
             // Fallback placeholder
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
               <Play className="w-12 h-12 text-gray-500" />
             </div>
           )}
 
           {/* Play Button Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
               <Play className="w-6 h-6 text-white ml-1" />
             </div>
           </div>
 
           {/* Duration Badge */}
           {video.minutes && (
-            <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded flex items-center space-x-1">
+            <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur px-2 py-1 rounded text-white text-[11px] flex items-center space-x-1">
               <Clock size={12} />
               <span>{formatDuration(video.minutes)}</span>
             </div>
@@ -111,14 +111,14 @@ export default function VideoCard({ video, priority = false }) {
 
           {/* Views Badge */}
           {video.views && (
-            <div className="absolute top-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded flex items-center space-x-1">
+            <div className="absolute top-2 right-2 bg-black/70 backdrop-blur px-2 py-1 rounded text-white text-[11px] flex items-center space-x-1">
               <Eye size={12} />
               <span>{formatViews(video.views)}</span>
             </div>
           )}
 
           {/* Quality Badge */}
-          <div className="absolute top-2 left-2 bg-purple-600 text-white text-xs px-2 py-1 rounded font-semibold">
+          <div className="absolute top-2 left-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[11px] px-2 py-1 rounded font-semibold shadow">
             HD
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function VideoCard({ video, priority = false }) {
       <div className="p-4 space-y-3">
         {/* Title */}
         <Link href={`/video/${getVideoUrlSegment()}`}>
-          <h3 className="text-white font-medium text-sm line-clamp-2 hover:text-purple-400 transition-colors duration-200">
+          <h3 className="text-white/90 font-medium text-sm line-clamp-2 hover:text-white transition-colors duration-200">
             {getVideoTitle()}
           </h3>
         </Link>
@@ -140,7 +140,7 @@ export default function VideoCard({ video, priority = false }) {
               <Link
                 key={index}
                 href={`/pornstar/${name.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-xs text-pink-400 hover:text-pink-300 transition-colors duration-200 flex items-center space-x-1"
+                className="text-xs text-pink-300 hover:text-pink-200 transition-colors duration-200 flex items-center space-x-1"
               >
                 <Star size={10} />
                 <span>{name}</span>
@@ -156,7 +156,7 @@ export default function VideoCard({ video, priority = false }) {
               <Link
                 key={index}
                 href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-xs bg-gray-700 hover:bg-purple-600 text-gray-300 hover:text-white px-2 py-1 rounded transition-colors duration-200"
+                className="text-[11px] bg-white/5 hover:bg-purple-600/80 text-gray-300 hover:text-white px-2 py-1 rounded-full transition-colors duration-200 border border-white/10"
               >
                 {tag}
               </Link>
@@ -165,7 +165,7 @@ export default function VideoCard({ video, priority = false }) {
         )}
 
         {/* Stats */}
-        <div className="flex items-center justify-between text-xs text-gray-400">
+        <div className="flex items-center justify-between text-[11px] text-gray-400">
           <div className="flex items-center space-x-3">
             {video.views && (
               <div className="flex items-center space-x-1">

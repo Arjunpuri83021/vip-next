@@ -6,7 +6,7 @@ export const revalidate = 60
 
 export const metadata = {
   title: 'Hijabi Videos',
-  description: 'Watch Hijabi videos on Hexmy with high-quality streaming.',
+  description: 'Watch Hijabi videos on vipmilfnut with high-quality streaming.',
   alternates: { canonical: '/hijabi' },
 }
 

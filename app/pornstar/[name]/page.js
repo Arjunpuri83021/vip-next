@@ -8,10 +8,10 @@ export async function generateMetadata({ params, searchParams }) {
   const name = decodeURIComponent(params.name)
   const page = Number(searchParams?.page || 1)
   const displayName = name.replace(/-/g, ' ')
-  const title = `hexmy - ${displayName} xvids porno missax trisha paytas porn`
+  const title = `vipmilfnut - ${displayName} xvids porno missax trisha paytas porn`
   const description = `sexy movie super movie ${displayName}. chinese family sex huge tits Porn Videos big natural boobs download vporn sex videos`
 
-  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://hexmy.com'
+  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://vipmilfnut.com'
   const canonical = `${canonicalBase}/pornstar/${params.name}`
 
   return {

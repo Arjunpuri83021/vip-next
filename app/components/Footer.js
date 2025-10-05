@@ -58,7 +58,7 @@ export default function Footer() {
     { name: 'Categories', href: '/tags' },
   ]
 
-  // Categories aligned with hexmy/src/components/partials/Slider.js
+  // Categories aligned with vipmilfnut/src/components/partials/Slider.js
   const sliderCategories = [
     'chochox',
     'scout69',
@@ -91,9 +91,9 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">H</span>
+                <span className="text-white font-bold text-lg">V</span>
               </div>
-              <span className="text-xl font-bold text-gradient">Hexmy</span>
+              <span className="text-xl font-bold text-gradient">vipmilfnut</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Premium adult entertainment platform featuring high-quality videos from top performers worldwide.
@@ -191,7 +191,7 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Hexmy. All rights reserved.
+              © {new Date().getFullYear()} vipmilfnut. All rights reserved.
             </div>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <Link href="/privacy" className="hover:text-purple-400 transition-colors duration-200">

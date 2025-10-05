@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost', 'hexmy.com', 'i.imgur.com', 'example.com'],
+    domains: ['localhost', 'vipmilfnut.com', 'i.imgur.com', 'example.com'],
     unoptimized: true
   },
   async rewrites() {

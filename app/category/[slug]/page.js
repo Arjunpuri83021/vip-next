@@ -48,68 +48,68 @@ const categorySearch = {
 // Legacy-like meta templates per category
 const categoryMeta = {
   'badwap': {
-    title: (page) => `Hexmy badwap Videos page ${page} - badwap xvedeo`,
-    desc: 'Explore a collection of premium badwap videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut badwap Videos page ${page} - badwap xvedeo`,
+    desc: 'Explore a collection of premium badwap videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'blueflim': {
-    title: (page) => `Hexmy Blueflim Videos Page ${page} – Watch HD videos online`,
-    desc: 'Explore a collection of premium Blueflim videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Blueflim Videos Page ${page} – Watch HD videos online`,
+    desc: 'Explore a collection of premium Blueflim videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'scout69': {
-    title: (page) => `Hexmy Scout69 Videos page ${page} - bad wap wwwxxx xvedeo`,
-    desc: 'Explore a collection of premium Scout69 Big boobs big dick videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Scout69 Videos page ${page} - bad wap wwwxxx xvedeo`,
+    desc: 'Explore a collection of premium Scout69 Big boobs big dick videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'lesbify': {
-    title: (page) => `Hexmy Lesbify Videos page ${page} - xxxhd,wwwsexcom videos`,
-    desc: 'Explore a collection of premium lesbian videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Lesbify Videos page ${page} - xxxhd,wwwsexcom videos`,
+    desc: 'Explore a collection of premium lesbian videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'famili-sex-com': {
-    title: (page) => `Hexmy famili sex com page ${page} - step family xvedeo`,
-    desc: 'Explore a collection of premium famili sex com videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut famili sex com page ${page} - step family xvedeo`,
+    desc: 'Explore a collection of premium famili sex com videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'boobs-pressing': {
-    title: (page) => `Hexmy Boobs Pressing page ${page} Videos – Watch HD clips now`,
-    desc: 'Explore a collection of premium boobs pressing videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Boobs Pressing page ${page} Videos – Watch HD clips now`,
+    desc: 'Explore a collection of premium boobs pressing videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'small-tits': {
-    title: (page) => `Hexmy Small Tits sex Videos page ${page} - 4K Pornstar 3pornstar`,
+    title: (page) => `vipmilfnut Small Tits sex Videos page ${page} - 4K Pornstar 3pornstar`,
     desc: 'Explore a collection of premium SmallTits videos. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'sex18': {
-    title: (page) => `Hexmy sex18 Videos page ${page} - xxxhd,wwwsexcom videos`,
-    desc: 'Explore a collection of premium sex18 videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut sex18 Videos page ${page} - xxxhd,wwwsexcom videos`,
+    desc: 'Explore a collection of premium sex18 videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'desi49': {
-    title: (page) => `Hexmy Desi49 Sex Videos page ${page} – Watch hot desi clips in HD`,
-    desc: 'Explore a collection of premium desi49 videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Desi49 Sex Videos page ${page} – Watch hot desi clips in HD`,
+    desc: 'Explore a collection of premium desi49 videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'dehati-sex': {
-    title: (page) => `Hexmy Dehati Videos page ${page} – Watch rural desi clips in HD`,
+    title: (page) => `vipmilfnut Dehati Videos page ${page} – Watch rural desi clips in HD`,
     desc: 'Explore a collection of premium Milf videos on Dehati. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'chochox': {
-    title: (page) => `Hexmy chochox Videos page ${page} – Watch Cartoon porn clips in HD`,
-    desc: 'Explore a collection of premium chochox videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut chochox Videos page ${page} – Watch Cartoon porn clips in HD`,
+    desc: 'Explore a collection of premium chochox videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'comxxx': {
-    title: (page) => `Hexmy comxxx Videos Page ${page} – Watch HD videos online`,
-    desc: 'Explore a collection of premium comxxx videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut comxxx Videos Page ${page} – Watch HD videos online`,
+    desc: 'Explore a collection of premium comxxx videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'milfnut': {
-    title: (page) => `Hexmy MilfNut Videos page ${page} - milf300 wwwxxx`,
-    desc: 'Explore a collection of premium MilfNut videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut MilfNut Videos page ${page} - milf300 wwwxxx`,
+    desc: 'Explore a collection of premium MilfNut videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'fullporner': {
-    title: (page) => `Hexmy fullporner Videos page ${page} - bad wap wwwxxx xvedeo`,
-    desc: 'Explore a collection of premium fullporner Big boobs big dick videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut fullporner Videos page ${page} - bad wap wwwxxx xvedeo`,
+    desc: 'Explore a collection of premium fullporner Big boobs big dick videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'aunt-sex': {
-    title: (page) => `Hexmy Aunt Sex Videos page ${page} - milf300 wwwxxx`,
-    desc: 'Explore a collection of premium Aunt Sex videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Aunt Sex Videos page ${page} - milf300 wwwxxx`,
+    desc: 'Explore a collection of premium Aunt Sex videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
   'teen-sex': {
-    title: (page) => `Hexmy Teen Sex Videos page ${page}`,
-    desc: 'Explore a collection of premium Teen sex videos on Hexmy. Enjoy handpicked, high-quality content filtered for your preferences.',
+    title: (page) => `vipmilfnut Teen Sex Videos page ${page}`,
+    desc: 'Explore a collection of premium Teen sex videos on vipmilfnut. Enjoy handpicked, high-quality content filtered for your preferences.',
   },
 }
 
@@ -119,8 +119,8 @@ export async function generateMetadata({ params, searchParams }) {
   const titleBase = categoryTitles[slug] || slug.replace(/-/g, ' ')
   const meta = categoryMeta[slug]
   const title = meta ? meta.title(page) : (page > 1 ? `${titleBase} Videos - Page ${page}` : `${titleBase} Videos`)
-  const description = meta ? meta.desc : `Watch ${titleBase} videos on Hexmy${page > 1 ? ` - Page ${page}` : ''}.`
-  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://hexmy.com'
+  const description = meta ? meta.desc : `Watch ${titleBase} videos on vipmilfnut${page > 1 ? ` - Page ${page}` : ''}.`
+  const canonicalBase = process.env.NEXT_PUBLIC_SITE_URL || 'https://vipmilfnut.com'
   const canonical = page > 1 ? `${canonicalBase}/category/${slug}/${page}` : `${canonicalBase}/category/${slug}`
   return {
     title,

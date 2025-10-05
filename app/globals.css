@@ -4,10 +4,10 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 10, 10, 14; /* deep slate */
-  --background-end-rgb: 6, 8, 12;     /* near black */
-  --brand-primary: 168, 85, 247;      /* purple-500 */
-  --brand-accent: 236, 72, 153;       /* pink-500 */
+  --background-start-rgb: 6, 8, 12;   /* near black */
+  --background-end-rgb: 2, 6, 23;     /* slate-950 */
+  --brand-primary: 99, 102, 241;      /* indigo-500 */
+  --brand-accent: 34, 211, 238;       /* cyan-400 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,10 +32,12 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: radial-gradient(1200px 600px at 80% -10%, rgba(var(--brand-primary), .08), transparent 60%),
-              radial-gradient(1000px 500px at 10% -10%, rgba(var(--brand-accent), .08), transparent 60%),
-              linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.2)),
-              rgb(var(--background-start-rgb));
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(var(--brand-primary), .10), transparent 60%),
+    radial-gradient(1000px 500px at 10% -10%, rgba(var(--brand-accent), .10), transparent 60%),
+    conic-gradient(from 180deg at 50% -10%, rgba(255,255,255,.04), rgba(0,0,0,0) 30%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.2)),
+    rgb(var(--background-start-rgb));
 }
 
 a {
@@ -57,8 +59,8 @@ a {
 
 .video-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(168, 85, 247, 0.22), 0 6px 14px rgba(0,0,0,.4);
-  border-color: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 18px 36px rgba(var(--brand-primary), 0.22), 0 8px 18px rgba(0,0,0,.45);
+  border-color: rgba(var(--brand-accent), 0.25);
 }
 
 .gradient-bg {
@@ -78,7 +80,7 @@ a {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, rgba(var(--brand-primary), 1) 0%, #60a5fa 50%, rgba(var(--brand-accent), 1) 100%);
+  background: linear-gradient(135deg, rgba(var(--brand-primary), 1) 0%, rgba(var(--brand-accent), 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -136,7 +138,7 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, rgba(var(--brand-primary), .9), rgba(var(--brand-accent), .9));
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

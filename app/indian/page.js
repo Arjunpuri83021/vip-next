@@ -5,8 +5,8 @@ import Pagination from '../components/Pagination'
 export const revalidate = 60
 
 export const metadata = {
-  title: 'Hexmy Desi49 SxyPrn & BF Sex Videos | IndianGaySite & Hexmy on Hexmy',
-  description: 'desi 52 com desi 49 com dehati sex dasi sex blueflim boyfriendtv com bollywood sex bf sexy indiangaysite sxyprn bf hindi video bf hindi movie banglaxx | Hexmy',
+  title: 'vipmilfnut Desi49 SxyPrn & BF Sex Videos | IndianGaySite & vipmilfnut on vipmilfnut',
+  description: 'desi 52 com desi 49 com dehati sex dasi sex blueflim boyfriendtv com bollywood sex bf sexy indiangaysite sxyprn bf hindi video bf hindi movie banglaxx | vipmilfnut',
   alternates: { canonical: '/indian' },
 }
 
