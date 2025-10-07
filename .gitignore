@@ -13,10 +13,7 @@ out/
 .next/cache/
 .cache/
 
-# Env files
-.env
-.env.*
-!.env.example
+
 
 # Logs
 logs/
