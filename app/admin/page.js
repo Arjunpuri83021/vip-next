@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
       <div className="admin-login-card">
         <div className="admin-login-header">
           <h2>Admin Login</h2>
-          <p>VipMilfNut Admin Panel</p>
+          <p>Admin Panel</p>
         </div>
         <form onSubmit={handleLogin} className="admin-login-form">
           <div className="form-group">
