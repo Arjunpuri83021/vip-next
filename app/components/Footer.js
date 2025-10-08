@@ -84,7 +84,7 @@ export default function Footer() {
   }))
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="text-white glass glass-border border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -121,7 +121,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xs bg-gray-800 hover:bg-purple-600 px-2 py-1 rounded transition-colors duration-200"
+                  className="text-xs bg-white/5 hover:bg-purple-600/70 px-2 py-1 rounded transition-colors duration-200"
                 >
                   {link.name}
                 </Link>
@@ -140,7 +140,7 @@ export default function Footer() {
                 <Link
                   key={category.name}
                   href={category.href}
-                  className="text-xs bg-gray-800 hover:bg-purple-600 px-2 py-1 rounded transition-colors duration-200"
+                  className="text-xs bg-white/5 hover:bg-purple-600/70 px-2 py-1 rounded transition-colors duration-200"
                 >
                   {category.name}
                 </Link>
@@ -159,7 +159,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={`/tag/${tag.slug || tag.name?.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="text-xs bg-gray-800 hover:bg-purple-600 px-2 py-1 rounded transition-colors duration-200"
+                  className="text-xs bg-white/5 hover:bg-purple-600/70 px-2 py-1 rounded transition-colors duration-200"
                 >
                   {tag.name}
                 </Link>
@@ -169,7 +169,7 @@ export default function Footer() {
         </div>
 
         {/* Popular Pornstars */}
-        <div className="mt-8 pt-8 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t border-white/10">
           <h3 className="text-lg font-semibold mb-4 flex items-center space-x-2">
             <Star size={18} />
             <span>Popular Pornstars</span>
@@ -179,7 +179,7 @@ export default function Footer() {
               <Link
                 key={index}
                 href={`/pornstar/${star.slug || star.name?.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-xs bg-gray-800 hover:bg-pink-600 px-2 py-1 rounded transition-colors duration-200"
+                className="text-xs bg-white/5 hover:bg-pink-600/70 px-2 py-1 rounded transition-colors duration-200"
               >
                 {star.name}
               </Link>
@@ -188,7 +188,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-8 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
               © {new Date().getFullYear()} vipmilfnut. All rights reserved.
