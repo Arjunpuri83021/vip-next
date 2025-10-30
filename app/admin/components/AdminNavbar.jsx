@@ -40,6 +40,11 @@ export default function AdminNavbar() {
           <li>
             <Link className={isActive("/admin/manage-admins") ? "active" : ""} href="/admin/manage-admins">Manage Admins</Link>
           </li>
+          <li>
+            <Link className={isActive("/admin/schedule-settings") ? "active" : ""} href="/admin/schedule-settings">
+              <i className="bi bi-gear-fill me-1"></i>Schedule
+            </Link>
+          </li>
         </ul>
         <button className="admin-logout-btn" onClick={handleLogout}>
           Logout

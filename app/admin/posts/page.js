@@ -31,6 +31,9 @@ export default function AdminPostsPage(){
   const [currentPage,setCurrentPage]=useState(1);
   const [totalPages,setTotalPages]=useState(0);
   const [searchQuery,setSearchQuery]=useState("");
+  const [publishStats,setPublishStats]=useState(null);
+  const [showPublishModal,setShowPublishModal]=useState(false);
+  const [batchSize,setBatchSize]=useState(5);
   const itemsPerPage=16;
 
   const handleSubmit=async(e)=>{
@@ -49,10 +52,17 @@ export default function AdminPostsPage(){
   const closeModal=()=>{ setShowModal(false); resetForm(); };
 
   const fetchPostData=async(page=1,search=searchQuery)=>{
-    try{ const res=await fetch(`${apiUrl}/getpostdata?page=${page}&limit=${itemsPerPage}&search=${search}`);
+    try{ const res=await fetch(`${apiUrl}/getpostdata?page=${page}&limit=${itemsPerPage}&search=${search}&includeUnpublished=true`);
       if(!res.ok) throw new Error('Network response was not ok');
       const data=await res.json(); setData([...data.records]); setTotalPages(data.totalPages); return data;
     }catch(e){ console.error('Error fetching data:', e); throw e; }
+  };
+
+  const fetchPublishStats=async()=>{
+    try{ const res=await fetch(`${apiUrl}/publish/stats`);
+      if(!res.ok) throw new Error('Failed to fetch stats');
+      const data=await res.json(); if(data.success){ setPublishStats(data.stats); }
+    }catch(e){ console.error('Error fetching publish stats:', e); }
   };
 
   const fetchSuggestedTags=async()=>{
@@ -75,10 +85,35 @@ export default function AdminPostsPage(){
       const p = parseInt(urlParams.get('page'));
       if(p && p>0){ setCurrentPage(p); }
     }catch(_){}
-    fetchPostData(); fetchSuggestedTags(); fetchSuggestedStars(); 
+    fetchPostData(); fetchSuggestedTags(); fetchSuggestedStars(); fetchPublishStats();
   },[]);
 
-  const handleDelete=async(id)=>{ if(!confirm('Are you sure you want to delete this post?')) return; try{ const res=await fetch(`${apiUrl}/deletepost/${id}`,{method:'DELETE'}); if(!res.ok) throw new Error('Network response was not ok'); setData(prev=>prev.filter(i=>i._id!==id)); await fetchPostData(currentPage,searchQuery);}catch(e){ alert('Error deleting post: '+e.message); fetchPostData(currentPage,searchQuery);} };
+  const handleDelete=async(id)=>{ if(!confirm('Are you sure you want to delete this post?')) return; try{ const res=await fetch(`${apiUrl}/deletepost/${id}`,{method:'DELETE'}); if(!res.ok) throw new Error('Network response was not ok'); setData(prev=>prev.filter(i=>i._id!==id)); await fetchPostData(currentPage,searchQuery); await fetchPublishStats();}catch(e){ alert('Error deleting post: '+e.message); fetchPostData(currentPage,searchQuery);} };
+
+  const handlePublish=async(id)=>{
+    try{ const res=await fetch(`${apiUrl}/publish/post/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({modelType:'Data'})}); 
+      const data=await res.json(); 
+      if(data.success){ alert('Post published successfully!'); await fetchPostData(currentPage,searchQuery); await fetchPublishStats(); }
+      else{ alert(data.message || 'Failed to publish post'); }
+    }catch(e){ alert('Error publishing post: '+e.message); }
+  };
+
+  const handleUnpublish=async(id)=>{
+    if(!confirm('Are you sure you want to unpublish this post?')) return;
+    try{ const res=await fetch(`${apiUrl}/unpublish/post/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({modelType:'Data'})}); 
+      const data=await res.json(); 
+      if(data.success){ alert('Post unpublished successfully!'); await fetchPostData(currentPage,searchQuery); await fetchPublishStats(); }
+      else{ alert(data.message || 'Failed to unpublish post'); }
+    }catch(e){ alert('Error unpublishing post: '+e.message); }
+  };
+
+  const handleBatchPublish=async()=>{
+    try{ const res=await fetch(`${apiUrl}/publish/batch`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({batchSize:parseInt(batchSize)})}); 
+      const data=await res.json(); 
+      if(data.success){ alert(`Successfully published ${data.publishedCount} posts!`); setShowPublishModal(false); await fetchPostData(currentPage,searchQuery); await fetchPublishStats(); }
+      else{ alert(data.message || 'Failed to publish batch'); }
+    }catch(e){ alert('Error publishing batch: '+e.message); }
+  };
 
   const openUpdateModal=(item)=>{ setIsUpdateMode(true); setPostId(item._id); setImgUrl(item.imageUrl||''); setAltKeywords(item.altKeywords||''); setname(item.name||[]); setTags(item.tags||[]); setLink(item.link||''); setIframeUrl(item.iframeUrl||''); settitel(item.titel||''); setMinutes(item.minutes||''); setCategory(item.Category||'english'); setShowModal(true); };
   const openAddModal=()=>{ resetForm(); setShowModal(true); };
@@ -117,10 +152,21 @@ export default function AdminPostsPage(){
         <AdminNavbar />
         <div className="admin-content"><div className="container">
           <div className="admin-table-container">
-            <div className="admin-table-header"><h2>Manage Posts</h2><button className="admin-add-btn" onClick={openAddModal}><i className="bi bi-plus-circle me-2"></i>Add New Post</button></div>
+            <div className="admin-table-header">
+              <h2>Manage Posts</h2>
+              <div className="d-flex gap-2">
+                <button className="btn btn-info" onClick={()=>setShowPublishModal(true)}><i className="bi bi-clock-history me-2"></i>Batch Publish</button>
+                <button className="admin-add-btn" onClick={openAddModal}><i className="bi bi-plus-circle me-2"></i>Add New Post</button>
+              </div>
+            </div>
+            {publishStats && (
+              <div className="alert alert-info mb-3">
+                <strong>Publishing Stats:</strong> Total: {publishStats.combined.total} | Published: {publishStats.combined.published} | Unpublished: {publishStats.combined.unpublished}
+              </div>
+            )}
             <div className="admin-search-bar"><input type="text" value={searchQuery} onChange={handleSearchChange} className="form-control" placeholder="Search by Title or Video No"/></div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-              {postdata.map((item)=>(<div className="col" key={item._id}><div className="card h-100 admin-post-card"><div className="admin-post-image-container"><img src={item.imageUrl} className="card-img-top" alt={item.altKeywords||item.titel}/><div className="admin-post-overlay"><div className="admin-action-btns"><button onClick={()=>openUpdateModal(item)} className="admin-edit-btn" title="Edit Post"><i className="bi bi-pencil-square"></i></button><button onClick={()=>handleDelete(item._id)} className="admin-delete-btn" title="Delete Post"><i className="bi bi-trash3"></i></button></div></div></div><div className="card-body"><h6 className="card-title text-truncate">{item.titel}</h6><div className="admin-post-meta"><span className="admin-post-duration"><i className="bi bi-clock"></i> {item.minutes} min</span><span className="admin-post-views"><i className="bi bi-eye"></i> {formatViews(item.views)}</span></div><div className="admin-post-category"><span className="badge bg-primary">{item.Category}</span></div></div></div></div>))}
+              {postdata.map((item)=>(<div className="col" key={item._id}><div className="card h-100 admin-post-card"><div className="admin-post-image-container"><img src={item.imageUrl} className="card-img-top" alt={item.altKeywords||item.titel}/>{!item.isPublished && <div className="position-absolute top-0 start-0 m-2"><span className="badge bg-warning text-dark">Unpublished</span></div>}<div className="admin-post-overlay"><div className="admin-action-btns"><button onClick={()=>openUpdateModal(item)} className="admin-edit-btn" title="Edit Post"><i className="bi bi-pencil-square"></i></button><button onClick={()=>handleDelete(item._id)} className="admin-delete-btn" title="Delete Post"><i className="bi bi-trash3"></i></button>{item.isPublished ? (<button onClick={()=>handleUnpublish(item._id)} className="btn btn-sm btn-warning" title="Unpublish Post"><i className="bi bi-eye-slash"></i></button>) : (<button onClick={()=>handlePublish(item._id)} className="btn btn-sm btn-success" title="Publish Now"><i className="bi bi-check-circle"></i></button>)}</div></div></div><div className="card-body"><h6 className="card-title text-truncate">{item.titel}</h6><div className="admin-post-meta"><span className="admin-post-duration"><i className="bi bi-clock"></i> {item.minutes} min</span><span className="admin-post-views"><i className="bi bi-eye"></i> {formatViews(item.views)}</span></div><div className="admin-post-category"><span className="badge bg-primary">{item.Category}</span></div></div></div></div>))}
             </div>
             {totalPages>1 && (
               <div className="mt-4 d-flex justify-content-center">
@@ -172,6 +218,15 @@ export default function AdminPostsPage(){
           </div>
           <div className="admin-modal-footer"><button type="button" className="btn btn-secondary" onClick={closeModal}>Cancel</button><button type="submit" className="btn btn-primary">{isUpdateMode? 'Update Post':'Add Post'}</button></div>
           </form></div></div>)}
+
+        {showPublishModal && (<div className="admin-modal"><div className="admin-modal-content" style={{maxWidth:'500px'}}><div className="admin-modal-header"><h3>Batch Publish Posts</h3><button className="admin-modal-close" onClick={()=>setShowPublishModal(false)}><i className="bi bi-x-lg"></i></button></div>
+          <div className="admin-modal-body">
+            <p>Publish multiple unpublished posts at once. The oldest unpublished posts will be published first.</p>
+            <div className="admin-form-group"><label htmlFor="batchSize">Number of posts to publish:</label><input type="number" id="batchSize" className="form-control" value={batchSize} onChange={(e)=>setBatchSize(e.target.value)} min="1" max="50"/></div>
+            {publishStats && (<div className="alert alert-info"><small>Currently {publishStats.combined.unpublished} unpublished posts available</small></div>)}
+          </div>
+          <div className="admin-modal-footer"><button type="button" className="btn btn-secondary" onClick={()=>setShowPublishModal(false)}>Cancel</button><button type="button" className="btn btn-primary" onClick={handleBatchPublish}>Publish {batchSize} Posts</button></div>
+        </div></div>)}
       </div>
     </Protected>
   );
